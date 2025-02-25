@@ -1,5 +1,5 @@
 class EntriesController < ApplicationController
-  before_action :set_place, only: [:new, :create]  
+  before_action :set_place, only: [:new, :create]
 
   def new
     if @place.nil?
@@ -16,6 +16,7 @@ class EntriesController < ApplicationController
     end
 
     @entry = @place.entries.build(entry_params)  
+    
     if @entry.save
       redirect_to place_path(@place), notice: "Entry added successfully!"
     else
@@ -26,10 +27,10 @@ class EntriesController < ApplicationController
   private
 
   def set_place
-    puts "Params received: #{params.inspect}"  
+    puts "Params received: #{params.inspect}"
     @place = Place.find_by(id: params[:place_id])  
-    puts "✅ Found Place: #{@place.inspect}" if @place
-    puts "❌ Place not found!" if @place.nil?
+    puts "Found Place: #{@place.inspect}" if @place
+    puts "Place not found!" if @place.nil?
   end
 
   def entry_params

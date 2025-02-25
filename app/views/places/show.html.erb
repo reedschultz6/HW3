@@ -2,15 +2,17 @@
 
 <h2>Journal Entries</h2>
 <ul>
-  <% @entries.each do |entry| %>
-    <li>
-      <strong><%= entry.title %></strong> - <%= entry.occurred_on %>
+  <% for entry in @entries %>
+    <li><strong><%= entry.title %></strong> - <%= entry.occurred_on %>
       <p><%= entry.description %></p>
     </li>
   <% end %>
 </ul>
 
-<%= link_to "Add New Entry", new_place_entry_path(@place) %> 
-<br>
-<br>
-<%= link_to "Back to Places", "/places" %>
+<p>
+  <a href="<%= new_place_entry_path(@place) %>">Add New Entry</a>
+</p>
+
+<p>
+  <a href="/places">Back to Places</a>
+</p>

@@ -1,28 +1,23 @@
 <h1>New Entry for <%= @place&.name || "Unknown Place" %></h1>
 
-<%= form_with(model: [@place, @entry], url: place_entries_path(@place), local: true) do |form| %>
-
-
-  <%= form.hidden_field :place_id, value: @place.id %>
-
+<form action="<%= place_entries_path(@place) %>" method="post">
   <p>
-    <%= form.label :title %><br>
-    <%= form.text_field :title, name: "entry[title]" %>  
+    <label for="title">Title</label>
+    <input type="text" name="entry[title]" id="title">
   </p>
 
   <p>
-    <%= form.label :description %><br>
-    <%= form.text_area :description, name: "entry[description]" %>  
+    <label for="description">Description</label>
+    <textarea name="entry[description]" id="description"></textarea>
   </p>
 
   <p>
-    <%= form.label :occurred_on, "Occurred On" %><br>
-    <%= form.date_field :occurred_on, name: "entry[occurred_on]" %> 
+    <label for="occurred_on">Occurred On</label>
+    <input type="date" name="entry[occurred_on]" id="occurred_on">
   </p>
 
-  <p>
-    <%= form.submit "Save Entry" %>
-  </p>
-<% end %>
-
-<%= link_to "Back to Place", place_path(@place) %>
+  <input type="hidden" name="entry[place_id]" id="place_id" value="<%= @place.id %>">
+  
+  <button>Save Entry</button>
+  <a href="<%= place_path(@place) %>">Back to Place</a>
+</form>

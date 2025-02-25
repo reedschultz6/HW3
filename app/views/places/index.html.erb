@@ -1,11 +1,15 @@
 <h1>Places I've Visited</h1>
 
 <ul>
-  <% @places.each do |place| %>
-    <li>
-      <%= link_to place.name, "/places/#{place.id}" %>
-    </li>
+  <% if @places.present? %>
+    <% for place in @places %>
+      <li>
+        <a href="/places/<%= place.id %>"><%= place.name %></a>
+      </li>
+    <% end %>
+  <% else %>
+    <p>No places available.</p>
   <% end %>
 </ul>
 
-<%= link_to "Add New Place", "/places/new" %>
+<a href="/places/new">Add New Place</a>
