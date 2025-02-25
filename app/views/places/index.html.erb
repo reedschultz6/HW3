@@ -1,15 +1,12 @@
 <h1>Places I've Been</h1>
 
 <ul>
-  <% @places.order(:id).each_with_index do |place, index| %>
-    <% if index == 0 && place.name != "Mexico City" %>
-      <%= place.update(name: "Mexico City") %> 
-    <% end %>
-
+  <% @places.order(:id).each do |place| %>
     <li>
       <a href="/places/<%= place.id %>"><%= place.name %></a>
     </li>
   <% end %>
 </ul>
 
-<a href="/posts/new">New Post</a>
+
+<a href="/places/new">New Places</a>

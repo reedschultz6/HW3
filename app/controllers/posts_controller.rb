@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   def new
-    @place = Place.find(params[:place_id]) if params[:place_id] # Check if place_id is given
+    @place = Place.find(params[:place_id]) if params[:place_id]
     @post = Post.new
   end
 
