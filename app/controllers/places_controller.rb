@@ -6,7 +6,7 @@ class PlacesController < ApplicationController
     render :template => "places/index"
 end
 def show
-    @places = Place.find_by(id: params[:id])
-    @postss = Post.where(place_id: @place.id)  
+    @place = Place.find(params[:id])
+    @posts = @place.posts
   end
 end

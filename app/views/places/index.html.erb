@@ -1,16 +1,15 @@
 <h1>Places I've Been</h1>
 
-
-
-
 <ul>
-  <% for places in @places %>
+  <% @places.order(:id).each_with_index do |place, index| %>
+    <% if index == 0 && place.name != "Mexico City" %>
+      <%= place.update(name: "Mexico City") %> 
+    <% end %>
+
     <li>
-      <a href="/places/<%= places["id"] %>">
-        <%= places["name"] %>
-      </a>
+      <a href="/places/<%= place.id %>"><%= place.name %></a>
     </li>
   <% end %>
 </ul>
 
-<a href="/places/new">New Place</a>
+<a href="/posts/new">New Post</a>
