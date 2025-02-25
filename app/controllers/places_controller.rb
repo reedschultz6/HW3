@@ -1,19 +1,21 @@
 class PlacesController < ApplicationController
 
   def index
-    @places = Place.all
-
-    render :template => "places/index"
+  @places = Place.all
 end
+
+def show
+  @place = Place.find_by({ "id" => params["id"] })
+  @entries = Entry.where({ "place_id" => @place["id"] })
+end
+
+def new
+end
+
 def create
-  @place = Place.new(place_params)
-  if @place.save
-    redirect_to places_path, notice: "Place added successfully!"
-  else
-    render :new
-  end
+  @place = Place.new
+  @place["name"] = params["name"]
+  @place.save
+  redirect_to "/places"
 end
-
-def place_params
-  params.require(:place).permit(:name)
 end
