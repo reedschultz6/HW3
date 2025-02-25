@@ -2,22 +2,22 @@
 
 <%= form_with(model: [@place, @entry], url: place_entries_path(@place), local: true) do |form| %>
 
-  <!-- ✅ Ensures `place_id` is sent correctly -->
+
   <%= form.hidden_field :place_id, value: @place.id %>
 
   <p>
     <%= form.label :title %><br>
-    <%= form.text_field :title, name: "entry[title]" %>  <!-- ✅ Explicitly sets name -->
+    <%= form.text_field :title, name: "entry[title]" %>  
   </p>
 
   <p>
     <%= form.label :description %><br>
-    <%= form.text_area :description, name: "entry[description]" %>  <!-- ✅ Explicitly sets name -->
+    <%= form.text_area :description, name: "entry[description]" %>  
   </p>
 
   <p>
     <%= form.label :occurred_on, "Occurred On" %><br>
-    <%= form.date_field :occurred_on, name: "entry[occurred_on]" %>  <!-- ✅ Explicitly sets name -->
+    <%= form.date_field :occurred_on, name: "entry[occurred_on]" %> 
   </p>
 
   <p>
